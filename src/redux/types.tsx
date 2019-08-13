@@ -1,5 +1,5 @@
 export const TYPE_PREFIXES = {
-  COINS: 'coins/'
+  LISTINGS: 'listings/'
 };
 
 export const SUFFIXES = {
@@ -8,7 +8,7 @@ export const SUFFIXES = {
 };
 
 export const LISTINGS = {
-  FETCH_LISTINGS_LATEST: 'coins/FETCH_LISTINGS_LATEST',
+  FETCH_LISTINGS_LATEST: 'listings/FETCH_LISTINGS_LATEST',
 };
 
 export interface FetchListingsAction {
