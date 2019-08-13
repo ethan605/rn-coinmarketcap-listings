@@ -1,34 +1,26 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
  * @format
  */
 
-import React, {Fragment} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import React, { PureComponent } from 'react';
+import { SafeAreaView, StatusBar } from 'react-native';
+import { Provider } from 'react-redux';
 
+// Locals
 import NewAppContent from 'src/NewAppContent';
+import buildStore from 'src/redux';
 
-const App = () => {
-  return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <NewAppContent title="New app" />
-      </SafeAreaView>
-    </Fragment>
-  );
+export default class App extends PureComponent {
+  store = buildStore();
+
+  render() {
+    return (
+      <Provider store={this.store}>
+        <StatusBar barStyle="dark-content" />
+        <SafeAreaView>
+          <NewAppContent title="New app" />
+        </SafeAreaView>
+      </Provider>
+    );
+  }
 };
-
-export default App;
