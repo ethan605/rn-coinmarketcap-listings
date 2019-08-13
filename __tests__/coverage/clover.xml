@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1565717412447" clover="3.2.0">
-  <project timestamp="1565717412447" name="All files">
+<coverage generated="1565717527516" clover="3.2.0">
+  <project timestamp="1565717527516" name="All files">
     <metrics statements="47" coveredstatements="40" conditionals="15" coveredconditionals="9" methods="13" coveredmethods="13" elements="75" coveredelements="62" complexity="0" loc="47" ncloc="47" packages="7" files="12" classes="12"/>
     <package name="rn-coinmarketcap-listings">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
