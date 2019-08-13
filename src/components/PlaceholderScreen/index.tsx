@@ -23,13 +23,16 @@ interface IState {
   usingHermes: boolean;
 };
 
-class Placeholder extends PureComponent<IProp, IState> {
+class PlaceholderScreen extends PureComponent<IProp, IState> {
   state = {
     usingHermes: typeof HermesInternal === 'object' && HermesInternal !== null,
   };
 
   componentDidMount() {
     this.props.fetchListingsLatest(0);
+    this.props.fetchListingsLatest(1);
+    this.props.fetchListingsLatest(2);
+    this.props.fetchListingsLatest(3);
   }
 
   render() {
@@ -115,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withConnect(Placeholder);
+export default withConnect(PlaceholderScreen);
