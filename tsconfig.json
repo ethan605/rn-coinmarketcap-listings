@@ -2,12 +2,16 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react",
     "lib": ["es6"],
     "moduleResolution": "node",
     "noEmit": true,
+    "paths": {
+      "src/*": ["./src/*"]
+    },
     "strict": true,
     "target": "esnext"
   },
