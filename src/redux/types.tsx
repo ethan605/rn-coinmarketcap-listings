@@ -7,15 +7,17 @@ export const SUFFIXES = {
   SUCCESS: ':SUCCESS',
 };
 
-export const COINS = {
-  FETCH_COINS: 'coins/FETCH_COINS',
+export const LISTINGS = {
+  FETCH_LISTINGS_LATEST: 'coins/FETCH_LISTINGS_LATEST',
 };
 
-export interface FetchCoinsAction {
+export interface FetchListingsAction {
   type: string;
   payload: {
+    coinsList?: object[];
+    errorMessage?: string;
     page?: number;
   },
 };
 
-export type CoinsActions = FetchCoinsAction;
+export type ListingsActions = FetchListingsAction;

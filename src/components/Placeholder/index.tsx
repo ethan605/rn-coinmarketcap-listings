@@ -6,24 +6,22 @@ import React, { PureComponent } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
   Colors,
   DebugInstructions,
+  Header,
+  LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-interface IProp {
-  allCoins: object[],
-  fetchAllCoins: (page: number) => void;
+// Locals
+import withConnect, { IConnectProps } from './withConnect';
+
+interface IProp extends IConnectProps {
 };
 
 interface IState {
   usingHermes: boolean;
 };
-
-// Locals
-import withConnect from './withConnect';
 
 class Placeholder extends PureComponent<IProp, IState> {
   state = {
@@ -31,8 +29,7 @@ class Placeholder extends PureComponent<IProp, IState> {
   };
 
   componentDidMount() {
-    this.props.fetchAllCoins(0);
-    console.debug('allCoins:', this.props.allCoins);
+    this.props.fetchListingsLatest(0);
   }
 
   render() {

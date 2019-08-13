@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
 // Locals
-import coinsReducer, { CoinsState } from './coins';
+import listingsReducer, { ListingsState } from './listings';
 
 export interface ReduxState {
-  coins: CoinsState;
+  listings: ListingsState;
 };
 
 export default combineReducers({
-  coins: coinsReducer,
+  listings: listingsReducer,
 });

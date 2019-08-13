@@ -1,19 +1,31 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { Action } from 'redux-actions';
 
 // Redux
 import { ReduxState } from 'src/redux';
-import { coins } from 'src/redux/actions';
+import { listings } from 'src/redux/actions';
 
-function mapStateToProps(state: ReduxState) {
-  const { allCoins } = state.coins;
+interface IStateMapping {
+  allCoins: object[];
+};
+
+interface IDispatchMapping {
+  fetchListingsLatest: (page: number) => Action<{ page: number }>;
+};
+
+function mapStateToProps(state: ReduxState): IStateMapping {
+  const { allCoins } = state.listings;
   return { allCoins };
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
+function mapDispatchToProps(dispatch: Dispatch): IDispatchMapping {
   return {
-    fetchAllCoins: (page: number) => dispatch(coins.fetchAllCoins(page)),
+    fetchListingsLatest: page => dispatch(listings.fetchListingsLatest({ page })),
   };
 }
+
+export interface IConnectProps extends IStateMapping, IDispatchMapping {
+};
 
 export default connect(mapStateToProps, mapDispatchToProps);

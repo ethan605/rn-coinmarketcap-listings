@@ -1,10 +1,23 @@
+import { createAction } from 'redux-actions';
 import { delay, put, takeEvery } from 'redux-saga/effects';
 
-export function* incrementAsync() {
-  yield delay(1000)
-  yield put({ type: 'INCREMENT' })
+// Types
+import { LISTINGS, SUFFIXES } from '../types';
+
+export function* fetchListingsLatestAsync() {
+  const successAction = createAction(LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.SUCCESS);
+  const errorAction = createAction(LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.SUCCESS);
+
+  try {
+    console.debug('fetchListingsLatestAsync');
+    const coinsData = [1, 2, 3];
+    yield put(successAction({ coinsData }));
+  } catch (error) {
+    const { message } = error;
+    yield put(errorAction({ message }));
+  }
 }
 
-export function* watchIncrementAsync() {
-  yield takeEvery('INCREMENT_ASYNC', incrementAsync)
+export function* watchFetchingListingsLatest() {
+  yield takeEvery(LISTINGS.FETCH_LISTINGS_LATEST, fetchListingsLatestAsync);
 }

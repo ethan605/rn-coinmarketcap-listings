@@ -1,3 +1,3 @@
-import * as coins from './coins';
+import * as listings from './listings';
 
-export { coins };
+export { listings };
