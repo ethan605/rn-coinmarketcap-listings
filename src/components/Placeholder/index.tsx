@@ -14,17 +14,26 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 interface IProp {
-  title: string;
+  allCoins: object[],
+  fetchAllCoins: (page: number) => void;
 };
 
 interface IState {
   usingHermes: boolean;
 };
 
-export default class NewAppContent extends PureComponent<IProp, IState> {
+// Locals
+import withConnect from './withConnect';
+
+class Placeholder extends PureComponent<IProp, IState> {
   state = {
     usingHermes: typeof HermesInternal === 'object' && HermesInternal !== null,
   };
+
+  componentDidMount() {
+    this.props.fetchAllCoins(0);
+    console.debug('allCoins:', this.props.allCoins);
+  }
 
   render() {
     return (
@@ -32,7 +41,6 @@ export default class NewAppContent extends PureComponent<IProp, IState> {
         contentInsetAdjustmentBehavior="automatic"
         style={styles.scrollView}>
         <Header />
-        <Text>{this.props.title}</Text>
         {!this.state.usingHermes ? null : (
           <View style={styles.engine}>
             <Text style={styles.footer}>{'Engine: Hermes'}</Text>
@@ -109,3 +117,5 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
+
+export default withConnect(Placeholder);

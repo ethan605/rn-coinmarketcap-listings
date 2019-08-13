@@ -7,7 +7,7 @@ import { SafeAreaView, StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 
 // Locals
-import NewAppContent from 'src/NewAppContent';
+import Placeholder from 'src/components/Placeholder';
 import buildStore from 'src/redux';
 
 export default class App extends PureComponent {
@@ -18,7 +18,7 @@ export default class App extends PureComponent {
       <Provider store={this.store}>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView>
-          <NewAppContent title="New app" />
+          <Placeholder title="New app" />
         </SafeAreaView>
       </Provider>
     );

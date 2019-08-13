@@ -11,10 +11,10 @@ export const COINS = {
   FETCH_COINS: 'coins/FETCH_COINS',
 };
 
-interface FetchCoinsAction {
-  type: string,
+export interface FetchCoinsAction {
+  type: string;
   payload: {
-    page?: number,
+    page?: number;
   },
 };
 
