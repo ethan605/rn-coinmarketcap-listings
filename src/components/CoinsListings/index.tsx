@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 
 class PlaceholderScreen extends PureComponent<Props> {
   public componentDidMount(): void {
-    this.props.fetchListingsLatest(0);
+    this.props.fetchListingsLatest(1);
   }
 
   public render(): ReactElement {

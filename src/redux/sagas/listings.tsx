@@ -1,3 +1,4 @@
+import { Action } from 'redux-actions';
 import { SagaIterator } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
@@ -8,13 +9,17 @@ import Api from 'src/utils/Api';
 import * as listings from '../actions/listings';
 
 // Types
-import { LISTINGS } from '../types';
+import { LISTINGS, FetchListingsPayload } from '../types';
 
-export function* fetchListingsLatestAsync(): SagaIterator {
+export function* fetchListingsLatestAsync(action?: Action<FetchListingsPayload>): SagaIterator {
+  if (action == null) {
+    return;
+  }
+
   try {
-    const data = yield call(Api.fetchListingsLatest, 1);
-    console.debug('fetchListingsLatestAsync', data);
-    const coinsList = [{ id: 1 }, { id: 2 }, { id: 3 }];
+    const { page = 1 } = action.payload;
+    const data = yield call(Api.fetchListingsLatest, page);
+    const { coinsList = [{ id: 1 }, { id: 2 }, { id: 3 }] } = data || {};
     yield put(listings.fetchListingsLatestSuccess({ coinsList }));
   } catch (error) {
     const { message: errorMessage, response } = error;
