@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">72.73% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/11</span>
+        <span class='fraction'>8/11</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>4/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>6/8</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -94,13 +94,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -118,14 +118,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import _ from 'lodash';
@@ -135,11 +135,11 @@ import Quote, { QuoteObject } from './Quote';
 &nbsp;
 @CacheKey('QuoteSerializerDeserializer')
 class QuoteSerializerDeserializer implements Deserializer, Serializer {
-  deserialize = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ata: object): QuoteObject =&gt; {</span>
-    const mappedPairs = <span class="cstat-no" title="statement not covered" >_.map(data, <span class="fstat-no" title="function not covered" >(v</span>alue, key): [string, Quote] =&gt; <span class="cstat-no" title="statement not covered" >[key, Quote.deserialize(value)])</span>;</span>
-<span class="cstat-no" title="statement not covered" >    return _.fromPairs(mappedPairs);</span>
+  deserialize = (data: object): QuoteObject =&gt; {
+    const mappedPairs = _.map(data, (value, key): [string, Quote] =&gt; [key, Quote.deserialize(value)]);
+    return _.fromPairs(mappedPairs);
   };
-  serialize = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ata: QuoteObject): object =&gt; {</span>
+  serialize = <span class="fstat-no" title="function not covered" >(d</span>ata: QuoteObject): object =&gt; {
     const mappedPairs = <span class="cstat-no" title="statement not covered" >_.map(data, <span class="fstat-no" title="function not covered" >(v</span>alue, key): [string, Quote] =&gt; <span class="cstat-no" title="statement not covered" >[key, Quote.serialize(value)])</span>;</span>
 <span class="cstat-no" title="statement not covered" >    return _.fromPairs(mappedPairs);</span>
   };
@@ -159,14 +159,14 @@ export default class ListingRecord {
   @JsonProperty()
   name?: string;
   @JsonProperty({ deserializer: QuoteSerializerDeserializer, serializer: QuoteSerializerDeserializer })
-  quote: QuoteObject = <span class="cstat-no" title="statement not covered" >{};</span>
+  quote: QuoteObject = {};
   @JsonProperty()
   slug?: string;
   @JsonProperty()
   symbol?: string;
 &nbsp;
-<span class="fstat-no" title="function not covered" >  st</span>atic deserialize(rawData: object[]): ListingRecord[] {
-<span class="cstat-no" title="statement not covered" >    return _.map(rawData, <span class="fstat-no" title="function not covered" >da</span>ta =&gt; <span class="cstat-no" title="statement not covered" >ObjectMapper.deserialize&lt;ListingRecord&gt;(ListingRecord, data))</span>;</span>
+  static deserialize(rawData: object[]): ListingRecord[] {
+    return _.map(rawData, data =&gt; ObjectMapper.deserialize&lt;ListingRecord&gt;(ListingRecord, data));
   }
 }
 &nbsp;</pre></td></tr>
@@ -175,7 +175,7 @@ export default class ListingRecord {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Aug 14 2019 16:26:19 GMT+0700 (Indochina Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Aug 14 2019 16:53:07 GMT+0700 (Indochina Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
