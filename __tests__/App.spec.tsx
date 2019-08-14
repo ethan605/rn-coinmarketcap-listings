@@ -5,8 +5,6 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-// import { call, put } from 'redux-saga/effects';
-// import { SagaIterator } from 'redux-saga';
 
 import App from '../App';
 
