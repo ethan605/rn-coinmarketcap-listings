@@ -1,5 +1,5 @@
 // Actions
-import { LISTINGS, SUFFIXES, FetchListingsAction } from '../types';
+import { LISTINGS, SUFFIXES, ReduxActions } from '../types';
 
 export interface ListingsState {
   allCoins: object[];
@@ -11,14 +11,15 @@ const INITIAL_STATE: ListingsState = {
   isFetching: false,
 };
 
-export default function coinsReducer(state: ListingsState = INITIAL_STATE, action: FetchListingsAction): ListingsState {
+export default function coinsReducer(state: ListingsState = INITIAL_STATE, action: ReduxActions): ListingsState {
   if (action.type === LISTINGS.FETCH_LISTINGS_LATEST) {
     return { ...state, isFetching: true };
   }
 
   // Success
   if (action.type === LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.SUCCESS) {
-    return { ...state, isFetching: false };
+    const { coinsList: allCoins = [] } = action.payload;
+    return { ...state, allCoins, isFetching: false };
   }
 
   // Error

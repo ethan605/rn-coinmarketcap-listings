@@ -1,3 +1,5 @@
+import { Action } from 'redux-actions';
+
 export const TYPE_PREFIXES = {
   LISTINGS: 'listings/',
 };
@@ -11,14 +13,11 @@ export const LISTINGS = {
   FETCH_LISTINGS_LATEST: 'listings/FETCH_LISTINGS_LATEST',
 };
 
-export interface FetchListingsAction {
-  type: string;
-  payload: {
-    coinsList?: object[];
-    errorMessage?: string;
-    meta?: object;
-    page?: number;
-  };
+export interface FetchListingsPayload {
+  coinsList?: object[];
+  errorMessage?: string;
+  meta?: object;
+  page?: number;
 }
 
-export type ListingsActions = FetchListingsAction;
+export type ReduxActions = Action<FetchListingsPayload>;
