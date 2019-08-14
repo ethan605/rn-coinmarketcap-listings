@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20,
   },
   order: {
     width: 40,
@@ -43,7 +42,9 @@ const styles = StyleSheet.create({
   },
   pricesContainer: {
     alignItems: 'flex-end',
+    marginBottom: 5,
     marginLeft: 5,
+    marginTop: 15,
   },
 });
 
