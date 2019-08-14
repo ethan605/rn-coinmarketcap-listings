@@ -16,33 +16,3 @@ describe('App', (): void => {
     expect(snapshot).toMatchSnapshot();
   });
 });
-
-// describe('Experimentials', (): void => {
-//   function doubler(num: number): Promise<number> {
-//     return new Promise<number>(
-//       (resolve): void => {
-//         console.debug('inside doubler:', num);
-//         resolve(num * 2);
-//       }
-//     );
-//   }
-
-//   function* main(num: number): SagaIterator {
-//     const val = yield call(doubler, num);
-//     yield put({ type: 'TEST:SUCCESS', payload: val });
-//   }
-
-//   function incrementor(otherGenerator: (num: number) => SagaIterator): (num: number) => SagaIterator {
-//     function* generator(num: number): SagaIterator {
-//       yield put({ type: 'TEST', payload: num + 1 });
-//       yield* otherGenerator(num);
-//     }
-
-//     return generator;
-//   }
-
-//   const generator = incrementor(main)(3);
-//   console.debug(generator.next().value);
-//   console.debug(generator.next().value);
-//   console.debug(generator.next().value);
-// });

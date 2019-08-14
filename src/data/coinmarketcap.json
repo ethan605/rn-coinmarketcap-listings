@@ -1,0 +1,10 @@
+{
+  "pro": {
+    "api_key": "dd5b8692-0821-4aca-904a-0862082503d2",
+    "base_uri": "https://pro-api.coinmarketcap.com/v1"
+  },
+  "sandbox": {
+    "api_key": "e05d560d-557a-4c44-b2a0-b6adb76fb6e1",
+    "base_uri": "https://sandbox-api.coinmarketcap.com/v1"
+  }
+}

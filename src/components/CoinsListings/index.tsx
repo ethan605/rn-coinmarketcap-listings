@@ -26,14 +26,14 @@ class PlaceholderScreen extends PureComponent<Props> {
       const data = await this.props.fetchListingsLatest(1);
       console.debug('requestListingsLatest success:', data);
     } catch (error) {
-      console.warn('requestListingsLatest error:', error);
+      console.warn('requestListingsLatest error:', error.response);
     }
   };
 
   public render(): ReactElement {
     return (
       <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.container}>
-        <Text>{'CoinsMarketCap - Listings'}</Text>
+        <Text>{'CoinMarketCap - Listings'}</Text>
       </ScrollView>
     );
   }

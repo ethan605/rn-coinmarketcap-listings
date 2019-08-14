@@ -14,7 +14,7 @@ exports[`App renders correctly 1`] = `
   >
     <View>
       <Text>
-        CoinsMarketCap - Listings
+        CoinMarketCap - Listings
       </Text>
     </View>
   </RCTScrollView>

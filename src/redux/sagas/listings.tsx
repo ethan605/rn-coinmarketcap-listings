@@ -1,6 +1,10 @@
+import _ from 'lodash';
 import { Action } from 'redux-actions';
 import { SagaIterator } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
+
+// Models
+import parseListingRecords from 'src/models/ListingRecord';
 
 // Utils
 import Api from 'src/utils/Api';
@@ -16,9 +20,9 @@ export function* fetchListingsLatestAsync(action: Action<FetchListingsPayload>):
   const { resolve = null, reject = null } = promise || {};
 
   try {
-    const data = yield call(Api.fetchListingsLatest, page);
-    const { coinsList = [{ id: 1 }, { id: 2 }, { id: 3 }] } = data || {};
-    yield put(listings.fetchListingsLatestSuccess({ data: coinsList }));
+    const response = yield call(Api.fetchListingsLatest, page);
+    const data = parseListingRecords(_.get(response, 'data.data'));
+    yield put(listings.fetchListingsLatestSuccess({ data }));
     resolve != null && resolve(data);
   } catch (error) {
     yield put(listings.fetchListingsLatestError({ errorMessage: error.message }));

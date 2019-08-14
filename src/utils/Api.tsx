@@ -1,23 +1,65 @@
-import axios, { AxiosInstance, AxiosPromise } from 'axios';
+/* global __DEV__ */
+
+import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
+import humps from 'humps';
+
+// Data
+import configs from 'src/data/coinmarketcap.json';
+
+interface CoinMarketCapApi {
+  apiKey: string;
+  baseUri: string;
+}
+
+interface Configs {
+  pro: CoinMarketCapApi;
+  sandbox: CoinMarketCapApi;
+}
 
 class Api {
   private axiosClient: AxiosInstance;
 
   public constructor() {
+    const { pro, sandbox } = humps.camelizeKeys(configs) as Configs;
+    const { apiKey, baseUri } = __DEV__ ? sandbox : pro;
+
     this.axiosClient = axios.create({
-      baseURL: 'https://pro-api.coinmarketcap.com/v1',
+      baseURL: baseUri,
       headers: {
-        'X-CMC_PRO_API_KEY': 'b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c',
+        'X-CMC_PRO_API_KEY': apiKey,
       },
     });
+
+    this.setupInterceptors();
   }
+
+  private setupInterceptors = (): void => {
+    this.axiosClient.interceptors.request.use(
+      (config): AxiosRequestConfig => {
+        console.debug('Axios request', config.url, config);
+        return config;
+      },
+      (error): Promise<void> => {
+        return Promise.reject(error);
+      }
+    );
+
+    this.axiosClient.interceptors.response.use(
+      (response): AxiosResponse => {
+        console.debug('Axios response', response.config.url, response.data);
+        return response;
+      },
+      (error): Promise<void> => {
+        return Promise.reject(error);
+      }
+    );
+  };
 
   public fetchListingsLatest = (page: number): AxiosPromise => {
     const limit = 10;
 
     const params = {
       limit,
-      convert: 'USD,BTC',
       start: 1 + limit * (page - 1),
     };
 
