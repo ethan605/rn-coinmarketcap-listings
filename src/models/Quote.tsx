@@ -40,6 +40,6 @@ export default class Quote {
   }
 
   public get formattedVolume24h(): string {
-    return numeral(this.volume24h).format('0,0.00%');
+    return numeral(this.volume24h).format('$0,0.00');
   }
 }
