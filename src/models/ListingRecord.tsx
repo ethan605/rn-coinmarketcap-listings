@@ -1,19 +1,29 @@
-import humps from 'humps';
+import _ from 'lodash';
+import { JsonProperty, ObjectMapper } from 'json-object-mapper';
 
-import { Quote } from './Quote';
+import Quote from './Quote';
 
-export interface ListingRecord {
-  circulatingSupply: number;
-  cmcRank: number;
-  id: number;
-  lastUpdated: string;
-  maxSupply: number;
-  name: string;
-  quote: { [key: string]: Quote };
-  slug: string;
-  symbol: string;
-}
+export default class ListingRecord {
+  @JsonProperty()
+  circulatingSupply?: number;
+  @JsonProperty()
+  cmcRank?: number;
+  @JsonProperty()
+  id?: number;
+  @JsonProperty({ type: Date })
+  lastUpdated?: Date;
+  @JsonProperty()
+  maxSupply?: number;
+  @JsonProperty()
+  name?: string;
+  @JsonProperty()
+  quote: { [key: string]: Quote } = {};
+  @JsonProperty()
+  slug?: string;
+  @JsonProperty()
+  symbol?: string;
 
-export default function parseListingRecords(rawData: object[]): ListingRecord[] {
-  return humps.camelizeKeys(rawData) as ListingRecord[];
+  static parse(rawData: object[]): ListingRecord[] {
+    return _.map(rawData, data => ObjectMapper.deserialize<ListingRecord>(ListingRecord, data));
+  }
 }

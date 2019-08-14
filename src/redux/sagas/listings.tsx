@@ -4,7 +4,7 @@ import { SagaIterator } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 // Models
-import parseListingRecords from 'src/models/ListingRecord';
+import ListingRecord from 'src/models/ListingRecord';
 
 // Utils
 import Api from 'src/utils/Api';
@@ -21,7 +21,7 @@ export function* fetchListingsLatestAsync(action: Action<FetchListingsPayload>):
 
   try {
     const response = yield call(Api.fetchListingsLatest, page);
-    const data = parseListingRecords(_.get(response, 'data.data'));
+    const data = ListingRecord.parse(_.get(response, 'data.data'));
     yield put(listings.fetchListingsLatestSuccess({ data }));
     resolve != null && resolve(data);
   } catch (error) {

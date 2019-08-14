@@ -1,5 +1,5 @@
 import { Action } from 'redux-actions';
-import { ListingRecord } from 'src/models/ListingRecord';
+import ListingRecord from 'src/models/ListingRecord';
 
 export type PromiseResolver<T> = (value?: T | PromiseLike<T>) => void;
 export type PromiseRejector = (reason?: Error | undefined) => void;

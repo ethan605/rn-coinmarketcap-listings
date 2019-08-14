@@ -1,9 +1,9 @@
-export interface Quote {
-  last_updated: string;
-  market_cap: number;
-  percentChange1h: number;
-  percentChange24h: number;
-  percentChange7d: number;
-  price: number;
-  volume24h: number;
+export default class Quote {
+  lastUpdated?: string;
+  marketCap?: number;
+  percentChange1h?: number;
+  percentChange24h?: number;
+  percentChange7d?: number;
+  price?: number;
+  volume24h?: number;
 }
