@@ -1,5 +1,6 @@
+import _ from 'lodash';
 import React, { PureComponent, ReactElement } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 
 // Models
 import ListingRecord from 'src/models/ListingRecord';
@@ -45,8 +46,18 @@ class PlaceholderScreen extends PureComponent<Props, State> {
 
   private keyExtractor = (item: ListingRecord): string => `coins_listings_${item.id}`;
 
+  private renderLoading = (): ReactElement => (
+    <View style={styles.loadingContainer}>
+      <Text style={styles.loading}>{'Initializing data...'}</Text>
+    </View>
+  );
+
   public render(): ReactElement {
     const { allCoins, isFetching } = this.props;
+
+    if (_.isEmpty(allCoins) && isFetching) {
+      return this.renderLoading();
+    }
 
     return (
       <FlatList

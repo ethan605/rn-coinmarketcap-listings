@@ -21,11 +21,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    color: 'darkgray',
+    color: 'darkblue',
     fontSize: 18,
   },
   subTitle: {
-    color: 'darkgray',
+    color: 'darkblue',
     fontSize: 15,
   },
   text: {
@@ -34,6 +34,12 @@ const styles = StyleSheet.create({
   },
   currency: {
     fontWeight: 'bold',
+  },
+  up: {
+    color: 'dodgerblue',
+  },
+  down: {
+    color: 'red',
   },
   pricesContainer: {
     alignItems: 'flex-end',
@@ -63,7 +69,9 @@ const RecordRow: React.SFC<Props> = ({ index, item }) => (
       </Text>
       <Text style={styles.text}>
         {'Change (24H): '}
-        <Text style={styles.currency}>{item.USD.formattedChange24h}</Text>
+        <Text style={[styles.currency, (item.USD.percentChange24h || 0) < 0 ? styles.down : styles.up]}>
+          {item.USD.formattedChange24h}
+        </Text>
       </Text>
     </View>
   </View>

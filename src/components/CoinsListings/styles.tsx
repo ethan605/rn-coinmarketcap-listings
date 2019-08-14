@@ -9,4 +9,14 @@ export default StyleSheet.create({
     paddingBottom: 10,
     paddingTop: 20,
   },
+  loadingContainer: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+  },
+  loading: {
+    color: 'teal',
+    fontSize: 20,
+    fontStyle: 'italic',
+  },
 });
