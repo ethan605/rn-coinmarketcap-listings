@@ -22,11 +22,12 @@ describe('Redux Sagas - listings', (): void => {
   });
 
   it('should handle fetchListingsLatestAsync when success', (): void => {
-    const generator = fetchListingsLatestAsync(listings.fetchListingsLatest({ page: 1 }));
-    expect(generator.next().value).toEqual(call(Api.fetchListingsLatest, 1));
+    const page = 1;
+    const generator = fetchListingsLatestAsync(listings.fetchListingsLatest({ page }));
+    expect(generator.next().value).toEqual(call(Api.fetchListingsLatest, page));
 
     const data = ListingRecord.deserialize(listingsLatestFixtures.data);
-    const successAction = listings.fetchListingsLatestSuccess({ data });
+    const successAction = listings.fetchListingsLatestSuccess({ data, page });
     expect(generator.next({ data: listingsLatestFixtures }).value).toEqual(put(successAction));
   });
 
