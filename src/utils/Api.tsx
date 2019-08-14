@@ -1,18 +1,18 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosPromise } from 'axios';
 
 class Api {
-  axiosClient: AxiosInstance;
+  private axiosClient: AxiosInstance;
 
-  constructor() {
+  public constructor() {
     this.axiosClient = axios.create({
       baseURL: 'https://pro-api.coinmarketcap.com/v1',
       headers: {
-        'X-CMC_PRO_API_KEY': 'b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c'
-      }
+        'X-CMC_PRO_API_KEY': 'b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c',
+      },
     });
   }
 
-  fetchListingsLatest = (page: number) => {
+  public fetchListingsLatest = (page: number): AxiosPromise => {
     const limit = 10;
 
     const params = {

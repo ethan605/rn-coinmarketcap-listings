@@ -1,7 +1,32 @@
 module.exports = {
   root: true,
-  extends: '@react-native-community',
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint'],
+  env: {
+    node: true,
+  },
+  extends: [
+    'eslint:recommended',
+    '@react-native-community',
+    'plugin:@typescript-eslint/recommended',
+  ],
   rules: {
-    'prettier/prettier': ['error', { 'trailingComma': 'es5', 'tabWidth': 2, 'singleQuote': true, 'printWidth': 120 }],
-  }
+    'prettier/prettier': [
+      'error',
+      {
+        printWidth: 120,
+        singleQuote: true,
+        tabWidth: 2,
+        trailingComma: 'es5',
+      }
+    ],
+    '@typescript-eslint/indent': [
+      'error',
+      2,
+    ],
+  },
 };

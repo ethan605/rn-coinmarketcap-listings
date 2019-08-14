@@ -1,5 +1,5 @@
 export const TYPE_PREFIXES = {
-  LISTINGS: 'listings/'
+  LISTINGS: 'listings/',
 };
 
 export const SUFFIXES = {
@@ -17,7 +17,7 @@ export interface FetchListingsAction {
     coinsList?: object[];
     errorMessage?: string;
     page?: number;
-  },
-};
+  };
+}
 
 export type ListingsActions = FetchListingsAction;

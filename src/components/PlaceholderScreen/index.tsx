@@ -2,7 +2,7 @@
  * @format
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, ReactElement } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import {
@@ -14,69 +14,12 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 // Locals
-import withConnect, { IConnectProps } from './withConnect';
+import withConnect, { ConnectProps } from './withConnect';
 
-interface IProp extends IConnectProps {
-};
+type Props = ConnectProps;
 
-interface IState {
+interface State {
   usingHermes: boolean;
-};
-
-class PlaceholderScreen extends PureComponent<IProp, IState> {
-  state = {
-    usingHermes: typeof HermesInternal === 'object' && HermesInternal !== null,
-  };
-
-  componentDidMount() {
-    this.props.fetchListingsLatest(0);
-    this.props.fetchListingsLatest(1);
-    this.props.fetchListingsLatest(2);
-    this.props.fetchListingsLatest(3);
-  }
-
-  render() {
-    return (
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.scrollView}>
-        <Header />
-        {!this.state.usingHermes ? null : (
-          <View style={styles.engine}>
-            <Text style={styles.footer}>{'Engine: Hermes'}</Text>
-          </View>
-        )}
-        <View style={styles.body}>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Step One</Text>
-            <Text style={styles.sectionDescription}>
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-              </Text>
-          </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>See Your Changes</Text>
-            <Text style={styles.sectionDescription}>
-              <ReloadInstructions />
-            </Text>
-          </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Debug</Text>
-            <Text style={styles.sectionDescription}>
-              <DebugInstructions />
-            </Text>
-          </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Learn More</Text>
-            <Text style={styles.sectionDescription}>
-              Read the docs to discover what to do next:
-              </Text>
-          </View>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    )
-  }
 }
 
 const styles = StyleSheet.create({
@@ -117,5 +60,58 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
+
+class PlaceholderScreen extends PureComponent<Props, State> {
+  public state = {
+    // eslint-disable-next-line no-undef
+    usingHermes: typeof HermesInternal === 'object' && HermesInternal !== null,
+  };
+
+  public componentDidMount(): void {
+    this.props.fetchListingsLatest(0);
+    this.props.fetchListingsLatest(1);
+    this.props.fetchListingsLatest(2);
+    this.props.fetchListingsLatest(3);
+  }
+
+  public render(): ReactElement {
+    return (
+      <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
+        <Header />
+        {!this.state.usingHermes ? null : (
+          <View style={styles.engine}>
+            <Text style={styles.footer}>{'Engine: Hermes'}</Text>
+          </View>
+        )}
+        <View style={styles.body}>
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionTitle}>Step One</Text>
+            <Text style={styles.sectionDescription}>
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this screen and then come back to see your
+              edits.
+            </Text>
+          </View>
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionTitle}>See Your Changes</Text>
+            <Text style={styles.sectionDescription}>
+              <ReloadInstructions />
+            </Text>
+          </View>
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionTitle}>Debug</Text>
+            <Text style={styles.sectionDescription}>
+              <DebugInstructions />
+            </Text>
+          </View>
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionTitle}>Learn More</Text>
+            <Text style={styles.sectionDescription}>Read the docs to discover what to do next:</Text>
+          </View>
+          <LearnMoreLinks />
+        </View>
+      </ScrollView>
+    );
+  }
+}
 
 export default withConnect(PlaceholderScreen);

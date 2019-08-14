@@ -1,5 +1,6 @@
-import { createAction } from 'redux-actions';
+import { SagaIterator } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
+import { createAction } from 'redux-actions';
 
 // Utils
 import Api from 'src/utils/Api';
@@ -7,7 +8,7 @@ import Api from 'src/utils/Api';
 // Types
 import { LISTINGS, SUFFIXES } from '../types';
 
-export function* fetchListingsLatestAsync() {
+export function* fetchListingsLatestAsync(): SagaIterator {
   const successAction = createAction(LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.SUCCESS);
   const errorAction = createAction(LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.ERROR);
 
@@ -22,6 +23,6 @@ export function* fetchListingsLatestAsync() {
   }
 }
 
-export function* watchFetchingListingsLatest() {
+export function* watchFetchingListingsLatest(): SagaIterator {
   yield takeLatest(LISTINGS.FETCH_LISTINGS_LATEST, fetchListingsLatestAsync);
 }

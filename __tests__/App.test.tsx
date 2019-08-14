@@ -8,7 +8,7 @@ import renderer from 'react-test-renderer';
 
 import App from '../App';
 
-it('renders correctly', () => {
+it('renders correctly', (): void => {
   const snapshot = renderer.create(<App />).toJSON();
   expect(snapshot).toMatchSnapshot();
 });
