@@ -28,5 +28,6 @@ module.exports = {
       'error',
       2,
     ],
+    '@typescript-eslint/ban-ts-ignore': ['warn']
   },
 };

@@ -12,7 +12,6 @@ export type ReduxState = ReduxState;
 /* eslint-disable prettier/prettier */
 
 export default function buildStore(): Store<ReduxState> {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const composeEnhancers = typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ != null ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
 
