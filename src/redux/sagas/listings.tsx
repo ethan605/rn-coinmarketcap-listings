@@ -11,23 +11,18 @@ import { listings, FetchListingsPayload } from '../actions';
 // Types
 import { LISTINGS } from '../types';
 
-export function* fetchListingsLatestAsync(action?: Action<FetchListingsPayload>): SagaIterator {
-  if (action == null) {
-    return;
-  }
-
-  const { resolve = null, reject = null } = action.payload.meta || {};
+export function* fetchListingsLatestAsync(action: Action<FetchListingsPayload>): SagaIterator {
+  const { page = 1, promise } = action.payload;
+  const { resolve = null, reject = null } = promise || {};
 
   try {
-    const { page = 1 } = action.payload;
     const data = yield call(Api.fetchListingsLatest, page);
-    const coinsList: object[] = [{ id: 1 }, { id: 2 }, { id: 3 }];
+    const { coinsList = [{ id: 1 }, { id: 2 }, { id: 3 }] } = data || {};
     yield put(listings.fetchListingsLatestSuccess({ data: coinsList }));
     resolve != null && resolve(data);
   } catch (error) {
+    yield put(listings.fetchListingsLatestError({ errorMessage: error.message }));
     reject != null && reject(error);
-    const { message: errorMessage } = error;
-    yield put(listings.fetchListingsLatestError({ errorMessage }));
   }
 }
 

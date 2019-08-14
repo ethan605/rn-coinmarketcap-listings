@@ -20,13 +20,12 @@ function mapStateToProps(state: ReduxState): StateMapping {
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchMapping {
   return {
-    fetchListingsLatest: (page): Promise<object[]> => {
-      return new Promise<object[]>(
+    fetchListingsLatest: (page): Promise<object[]> =>
+      new Promise<object[]>(
         (resolve, reject): void => {
-          dispatch(listings.fetchListingsLatest({ page, meta: { resolve, reject } }));
+          dispatch(listings.fetchListingsLatest({ page, promise: { resolve, reject } }));
         }
-      );
-    },
+      ),
   };
 }
 
