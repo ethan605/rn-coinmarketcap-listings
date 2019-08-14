@@ -24,7 +24,9 @@ export default function listingsReducer(state: ListingsState = INITIAL_STATE, ac
 
   // Success
   if (action.type === LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.SUCCESS) {
-    const { data: allCoins = [] } = action.payload;
+    const { data: newCoins = [], page = 1 } = action.payload;
+    const { allCoins: currentCoins } = state;
+    const allCoins = page <= 1 ? newCoins : [...currentCoins, ...newCoins];
     return { ...state, allCoins, isFetching: false };
   }
 

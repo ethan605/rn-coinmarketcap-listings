@@ -33,6 +33,16 @@ class PlaceholderScreen extends PureComponent<Props, State> {
     }
   };
 
+  private handleLoadMore = async (): Promise<void> => {
+    const { currentPage } = this.state;
+    try {
+      await this.props.fetchListingsLatest(currentPage + 1);
+      this.setState({ currentPage: currentPage + 1 });
+    } catch (error) {
+      console.warn('requestListingsLatest error:', error.response);
+    }
+  };
+
   private keyExtractor = (item: ListingRecord): string => `coins_listings_${item.id}`;
 
   public render(): ReactElement {
@@ -43,6 +53,8 @@ class PlaceholderScreen extends PureComponent<Props, State> {
         contentContainerStyle={styles.contentContainer}
         data={allCoins}
         keyExtractor={this.keyExtractor}
+        onEndReached={this.handleLoadMore}
+        onEndReachedThreshold={0.4}
         onRefresh={this.requestListingsLatest}
         refreshing={isFetching}
         renderItem={RecordRow}
