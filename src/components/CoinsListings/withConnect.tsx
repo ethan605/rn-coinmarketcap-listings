@@ -1,12 +1,15 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
+// Models
+import ListingRecord from 'src/models/ListingRecord';
+
 // Redux
 import { ReduxState } from 'src/redux';
 import { listings } from 'src/redux/actions';
 
 interface StateMapping {
-  allCoins: object[];
+  allCoins: ListingRecord[];
 }
 
 interface DispatchMapping {

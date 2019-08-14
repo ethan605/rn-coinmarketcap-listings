@@ -1,22 +1,25 @@
-/**
- * @format
- */
-
 import React, { PureComponent, ReactElement } from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import { FlatList } from 'react-native';
+
+// Models
+import ListingRecord from 'src/models/ListingRecord';
 
 // Locals
+import RecordRow from './RecordRow';
+import styles from './styles';
 import withConnect, { ConnectProps } from './withConnect';
 
 type Props = ConnectProps;
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'lightgray',
-  },
-});
+interface State {
+  currentPage: number;
+}
 
-class PlaceholderScreen extends PureComponent<Props> {
+class PlaceholderScreen extends PureComponent<Props, State> {
+  state = {
+    currentPage: 1,
+  };
+
   public componentDidMount(): void {
     this.requestListingsLatest();
   }
@@ -30,11 +33,17 @@ class PlaceholderScreen extends PureComponent<Props> {
     }
   };
 
+  private keyExtractor = (item: ListingRecord): string => `coins_listings_${item.id}`;
+
   public render(): ReactElement {
     return (
-      <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.container}>
-        <Text>{'CoinMarketCap - Listings'}</Text>
-      </ScrollView>
+      <FlatList
+        contentContainerStyle={styles.contentContainer}
+        data={this.props.allCoins}
+        keyExtractor={this.keyExtractor}
+        renderItem={RecordRow}
+        style={styles.container}
+      />
     );
   }
 }

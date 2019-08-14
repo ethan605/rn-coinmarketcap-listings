@@ -1,9 +1,12 @@
+// Models
+import ListingRecord from 'src/models/ListingRecord';
+
 // Actions
 import { LISTINGS, SUFFIXES } from '../types';
 import { ReduxActions } from '../actions';
 
 export interface ListingsState {
-  allCoins: object[];
+  allCoins: ListingRecord[];
   errorMessage?: string;
   isFetching: boolean;
 }

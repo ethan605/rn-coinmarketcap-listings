@@ -1,4 +1,5 @@
-import { JsonProperty, ObjectMapper } from 'json-object-mapper';
+import { JsonProperty, ObjectMapper, JsonIgnore } from 'json-object-mapper';
+import numeral from 'numeral';
 
 export type QuoteObject = { [key: string]: Quote };
 
@@ -24,5 +25,21 @@ export default class Quote {
 
   static serialize(data: Quote): object {
     return ObjectMapper.serialize(data);
+  }
+
+  public get formattedMarketCap(): string {
+    return numeral(this.marketCap).format('$0,0.00');
+  }
+
+  public get formattedPrice(): string {
+    return numeral(this.price).format('$0,0.00');
+  }
+
+  public get formattedChange24h(): string {
+    return numeral(this.percentChange24h).format('0,0.00%');
+  }
+
+  public get formattedVolume24h(): string {
+    return numeral(this.volume24h).format('0,0.00%');
   }
 }

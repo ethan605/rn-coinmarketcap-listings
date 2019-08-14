@@ -56,7 +56,7 @@ class Api {
   };
 
   public fetchListingsLatest = (page: number): AxiosPromise => {
-    const limit = 10;
+    const limit = 20;
 
     const params = {
       limit,
