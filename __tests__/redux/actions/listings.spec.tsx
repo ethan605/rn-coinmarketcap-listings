@@ -15,12 +15,12 @@ describe('Redux Actions - listings', (): void => {
       payload: { coinsList },
     });
 
-    const message = 'Request failed';
+    const errorMessage = 'Request failed';
     const meta = { data: { status: 'failed' } };
 
-    expect(listings.fetchListingsLatestError({ message, meta })).toEqual({
+    expect(listings.fetchListingsLatestError({ errorMessage, meta })).toEqual({
       type: LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.ERROR,
-      payload: { message, meta },
+      payload: { errorMessage, meta },
     });
   });
 });

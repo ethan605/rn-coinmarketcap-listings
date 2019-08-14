@@ -5,13 +5,14 @@ import { Action } from 'redux-actions';
 // Redux
 import { ReduxState } from 'src/redux';
 import { listings } from 'src/redux/actions';
+import { FetchListingsPayload } from 'src/redux/types';
 
 interface StateMapping {
   allCoins: object[];
 }
 
 interface DispatchMapping {
-  fetchListingsLatest: (page: number) => Action<{ page: number }>;
+  fetchListingsLatest: (page: number) => Action<FetchListingsPayload>;
 }
 
 function mapStateToProps(state: ReduxState): StateMapping {
@@ -21,7 +22,7 @@ function mapStateToProps(state: ReduxState): StateMapping {
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchMapping {
   return {
-    fetchListingsLatest: (page): Action<{ page: number }> => dispatch(listings.fetchListingsLatest({ page })),
+    fetchListingsLatest: (page): Action<FetchListingsPayload> => dispatch(listings.fetchListingsLatest({ page })),
   };
 }
 

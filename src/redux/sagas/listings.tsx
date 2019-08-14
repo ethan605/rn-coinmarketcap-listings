@@ -17,9 +17,9 @@ export function* fetchListingsLatestAsync(): SagaIterator {
     const coinsList = [{ id: 1 }, { id: 2 }, { id: 3 }];
     yield put(listings.fetchListingsLatestSuccess({ coinsList }));
   } catch (error) {
-    const { message, response } = error;
+    const { message: errorMessage, response } = error;
     const { data = null } = response || {};
-    yield put(listings.fetchListingsLatestError({ message, meta: { data } }));
+    yield put(listings.fetchListingsLatestError({ errorMessage, meta: { data } }));
   }
 }
 

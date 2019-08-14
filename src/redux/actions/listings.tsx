@@ -1,10 +1,10 @@
 import { createAction } from 'redux-actions';
-import { LISTINGS, SUFFIXES } from '../types';
+import { LISTINGS, SUFFIXES, FetchListingsPayload } from '../types';
 
-export const fetchListingsLatest = createAction<{ page: number }>(LISTINGS.FETCH_LISTINGS_LATEST);
-export const fetchListingsLatestSuccess = createAction<{ coinsList: object[] }>(
+export const fetchListingsLatest = createAction<FetchListingsPayload>(LISTINGS.FETCH_LISTINGS_LATEST);
+export const fetchListingsLatestSuccess = createAction<FetchListingsPayload>(
   LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.SUCCESS
 );
-export const fetchListingsLatestError = createAction<{ message: string; meta: object }>(
+export const fetchListingsLatestError = createAction<FetchListingsPayload>(
   LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.ERROR
 );
