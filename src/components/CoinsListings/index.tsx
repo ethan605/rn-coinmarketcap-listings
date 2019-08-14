@@ -18,24 +18,16 @@ interface State {
 
 class PlaceholderScreen extends PureComponent<Props, State> {
   state = {
-    currentPage: 1,
+    currentPage: 0,
   };
 
   public componentDidMount(): void {
-    this.requestListingsLatest();
+    this.handleRefresh();
   }
 
-  private requestListingsLatest = async (): Promise<void> => {
-    try {
-      this.setState({ currentPage: 1 });
-      await this.props.fetchListingsLatest(1);
-    } catch (error) {
-      console.warn('requestListingsLatest error:', error.response);
-    }
-  };
+  private requestListingsLatest = async (refreshing = false): Promise<void> => {
+    const currentPage = refreshing ? this.state.currentPage : 0;
 
-  private handleLoadMore = async (): Promise<void> => {
-    const { currentPage } = this.state;
     try {
       await this.props.fetchListingsLatest(currentPage + 1);
       this.setState({ currentPage: currentPage + 1 });
@@ -44,13 +36,28 @@ class PlaceholderScreen extends PureComponent<Props, State> {
     }
   };
 
+  private handleLoadMore = (): Promise<void> => this.requestListingsLatest();
+  private handleRefresh = (): Promise<void> => this.requestListingsLatest(true);
+
   private keyExtractor = (item: Coin): string => `coins_listings_${item.id}`;
 
   private renderLoading = (): ReactElement => (
-    <View style={styles.loadingContainer}>
-      <Text style={styles.loading}>{'Initializing data...'}</Text>
+    <View style={styles.initContainer}>
+      <Text style={styles.initText}>{'Initializing data...'}</Text>
     </View>
   );
+
+  private renderFooter = (): ReactElement | null => {
+    if (!this.props.isFetching || this.state.currentPage < 1) {
+      return null;
+    }
+
+    return (
+      <View style={styles.loadingMoreContainer}>
+        <Text style={styles.loadingMoreText}>{'Loading more...'}</Text>
+      </View>
+    );
+  };
 
   public render(): ReactElement {
     const { allCoins, isFetching } = this.props;
@@ -61,12 +68,13 @@ class PlaceholderScreen extends PureComponent<Props, State> {
 
     return (
       <FlatList
+        ListFooterComponent={this.renderFooter}
         contentContainerStyle={styles.contentContainer}
         data={allCoins}
         keyExtractor={this.keyExtractor}
         onEndReached={this.handleLoadMore}
         onEndReachedThreshold={0.4}
-        onRefresh={this.requestListingsLatest}
+        onRefresh={this.handleRefresh}
         refreshing={isFetching}
         renderItem={RecordRow}
         style={styles.container}

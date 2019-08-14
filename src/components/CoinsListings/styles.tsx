@@ -9,14 +9,21 @@ export default StyleSheet.create({
     paddingBottom: 10,
     paddingTop: 20,
   },
-  loadingContainer: {
+  initContainer: {
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
   },
-  loading: {
+  initText: {
     color: 'teal',
     fontSize: 20,
+  },
+  loadingMoreContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
+  },
+  loadingMoreText: {
     fontStyle: 'italic',
   },
 });
