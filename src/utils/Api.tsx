@@ -36,20 +36,22 @@ class Api {
   private setupInterceptors = (): void => {
     this.axiosClient.interceptors.request.use(
       (config): AxiosRequestConfig => {
-        console.debug('Axios request', config.url, config);
+        console.debug('Axios request fired', config.url, config);
         return config;
       },
       (error): Promise<void> => {
+        console.debug('Axios request error', error);
         return Promise.reject(error);
       }
     );
 
     this.axiosClient.interceptors.response.use(
       (response): AxiosResponse => {
-        console.debug('Axios response', response.config.url, response.data);
+        console.debug('Axios response received', response.config.url, response.data);
         return response;
       },
       (error): Promise<void> => {
+        console.debug('Axios response error', error);
         return Promise.reject(error);
       }
     );

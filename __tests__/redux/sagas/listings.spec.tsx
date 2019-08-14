@@ -64,7 +64,7 @@ describe('Redux Sagas - listings', () => {
     } catch (error) {}
   });
 
-  test('fetchListingsLatest promise error', async () => {
+  it('fetchListingsLatest promise error', async () => {
     const promise = new Promise<Coin[]>(
       (resolve, reject): void => {
         const page = 1;
