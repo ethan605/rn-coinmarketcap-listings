@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   },
   pricesContainer: {
     alignItems: 'flex-end',
+    marginLeft: 5,
   },
 });
 
