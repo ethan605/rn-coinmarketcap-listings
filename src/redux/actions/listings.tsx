@@ -1,5 +1,8 @@
 import { createAction } from 'redux-actions';
-import { LISTINGS, SUFFIXES, FetchListingsPayload } from '../types';
+
+// Locals
+import { LISTINGS, SUFFIXES } from '../types';
+import { FetchListingsPayload } from './typings';
 
 export const fetchListingsLatest = createAction<FetchListingsPayload>(LISTINGS.FETCH_LISTINGS_LATEST);
 export const fetchListingsLatestSuccess = createAction<FetchListingsPayload>(

@@ -8,19 +8,18 @@ describe('Redux Actions - listings', (): void => {
       payload: { page: 1 },
     });
 
-    const coinsList = [{ id: 1 }, { id: 2 }, { id: 3 }];
+    const data = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
-    expect(listings.fetchListingsLatestSuccess({ coinsList })).toEqual({
+    expect(listings.fetchListingsLatestSuccess({ data })).toEqual({
       type: LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.SUCCESS,
-      payload: { coinsList },
+      payload: { data },
     });
 
     const errorMessage = 'Request failed';
-    const meta = { data: { status: 'failed' } };
 
-    expect(listings.fetchListingsLatestError({ errorMessage, meta })).toEqual({
+    expect(listings.fetchListingsLatestError({ errorMessage })).toEqual({
       type: LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.ERROR,
-      payload: { errorMessage, meta },
+      payload: { errorMessage },
     });
   });
 });

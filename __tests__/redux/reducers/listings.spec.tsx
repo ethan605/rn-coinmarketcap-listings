@@ -27,7 +27,7 @@ describe('Redux Reducers - listings', (): void => {
     const coins = [{ id: 1 }, { id: 2 }, { id: 3 }];
     const newState = { ...INITIAL_STATE, allCoins: coins, isFetching: false };
 
-    const fetchListingsLatestSuccess = listings.fetchListingsLatestSuccess({ coinsList: coins });
+    const fetchListingsLatestSuccess = listings.fetchListingsLatestSuccess({ data: coins });
     expect(listingsReducer(currentState, fetchListingsLatestSuccess)).toEqual(newState);
   });
 

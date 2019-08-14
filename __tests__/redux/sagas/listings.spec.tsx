@@ -18,8 +18,8 @@ describe('Redux Sagas - listings', (): void => {
     const generator = fetchListingsLatestAsync(listings.fetchListingsLatest({ page }));
     expect(generator.next().value).toEqual(call(Api.fetchListingsLatest, page));
 
-    const coinsList = [{ id: 1 }, { id: 2 }, { id: 3 }];
-    const successAction = listings.fetchListingsLatestSuccess({ coinsList });
+    const data = [{ id: 1 }, { id: 2 }, { id: 3 }];
+    const successAction = listings.fetchListingsLatestSuccess({ data });
     expect(generator.next().value).toEqual(put(successAction));
   });
 });

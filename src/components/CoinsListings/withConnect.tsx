@@ -1,18 +1,16 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { Action } from 'redux-actions';
 
 // Redux
 import { ReduxState } from 'src/redux';
 import { listings } from 'src/redux/actions';
-import { FetchListingsPayload } from 'src/redux/types';
 
 interface StateMapping {
   allCoins: object[];
 }
 
 interface DispatchMapping {
-  fetchListingsLatest: (page: number) => Action<FetchListingsPayload>;
+  fetchListingsLatest: (page: number) => Promise<object[]>;
 }
 
 function mapStateToProps(state: ReduxState): StateMapping {
@@ -22,7 +20,13 @@ function mapStateToProps(state: ReduxState): StateMapping {
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchMapping {
   return {
-    fetchListingsLatest: (page): Action<FetchListingsPayload> => dispatch(listings.fetchListingsLatest({ page })),
+    fetchListingsLatest: (page): Promise<object[]> => {
+      return new Promise<object[]>(
+        (resolve, reject): void => {
+          dispatch(listings.fetchListingsLatest({ page, meta: { resolve, reject } }));
+        }
+      );
+    },
   };
 }
 

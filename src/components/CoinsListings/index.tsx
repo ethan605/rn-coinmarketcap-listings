@@ -18,8 +18,17 @@ const styles = StyleSheet.create({
 
 class PlaceholderScreen extends PureComponent<Props> {
   public componentDidMount(): void {
-    this.props.fetchListingsLatest(1);
+    this.requestListingsLatest();
   }
+
+  private requestListingsLatest = async (): Promise<void> => {
+    try {
+      const data = await this.props.fetchListingsLatest(1);
+      console.debug('requestListingsLatest success:', data);
+    } catch (error) {
+      console.warn('requestListingsLatest error:', error);
+    }
+  };
 
   public render(): ReactElement {
     return (

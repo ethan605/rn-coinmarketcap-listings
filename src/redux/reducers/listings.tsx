@@ -1,5 +1,6 @@
 // Actions
-import { LISTINGS, SUFFIXES, ReduxActions } from '../types';
+import { LISTINGS, SUFFIXES } from '../types';
+import { ReduxActions } from '../actions';
 
 export interface ListingsState {
   allCoins: object[];
@@ -20,7 +21,7 @@ export default function listingsReducer(state: ListingsState = INITIAL_STATE, ac
 
   // Success
   if (action.type === LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.SUCCESS) {
-    const { coinsList: allCoins = [] } = action.payload;
+    const { data: allCoins = [] } = action.payload;
     return { ...state, allCoins, isFetching: false };
   }
 
