@@ -3,7 +3,7 @@ import React, { PureComponent, ReactElement } from 'react';
 import { FlatList, Text, View } from 'react-native';
 
 // Models
-import ListingRecord from 'src/models/ListingRecord';
+import Coin from 'src/models/Coin';
 
 // Locals
 import RecordRow from './RecordRow';
@@ -44,7 +44,7 @@ class PlaceholderScreen extends PureComponent<Props, State> {
     }
   };
 
-  private keyExtractor = (item: ListingRecord): string => `coins_listings_${item.id}`;
+  private keyExtractor = (item: Coin): string => `coins_listings_${item.id}`;
 
   private renderLoading = (): ReactElement => (
     <View style={styles.loadingContainer}>

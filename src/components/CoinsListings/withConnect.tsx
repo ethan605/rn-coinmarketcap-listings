@@ -2,14 +2,14 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 // Models
-import ListingRecord from 'src/models/ListingRecord';
+import Coin from 'src/models/Coin';
 
 // Redux
 import { ReduxState } from 'src/redux';
 import { listings } from 'src/redux/actions';
 
 interface StateMapping {
-  allCoins: ListingRecord[];
+  allCoins: Coin[];
   isFetching: boolean;
 }
 

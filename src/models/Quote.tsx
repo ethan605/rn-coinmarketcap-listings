@@ -19,12 +19,12 @@ export default class Quote {
   @JsonProperty({ name: 'volume_24h' })
   volume24h?: number;
 
-  static deserialize(data: object): Quote {
+  static parse(data: object): Quote {
     return ObjectMapper.deserialize<Quote>(Quote, data);
   }
 
-  static serialize(data: Quote): object {
-    return ObjectMapper.serialize(data);
+  static stringify(data: Quote): string {
+    return ObjectMapper.serialize(data) as string;
   }
 
   public get formattedMarketCap(): string {

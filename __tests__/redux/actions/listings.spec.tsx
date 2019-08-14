@@ -1,5 +1,6 @@
 import { listings } from 'src/redux/actions';
 import { LISTINGS, SUFFIXES } from 'src/redux/types';
+import Coin from 'src/models/Coin';
 
 describe('Redux Actions - listings', (): void => {
   it('fetchListingsLatest actions', (): void => {
@@ -8,7 +9,7 @@ describe('Redux Actions - listings', (): void => {
       payload: { page: 1 },
     });
 
-    const data = [{ id: 1 }, { id: 2 }, { id: 3 }];
+    const data = Coin.parse([{ id: 1 }, { id: 2 }, { id: 3 }]);
 
     expect(listings.fetchListingsLatestSuccess({ data })).toEqual({
       type: LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.SUCCESS,

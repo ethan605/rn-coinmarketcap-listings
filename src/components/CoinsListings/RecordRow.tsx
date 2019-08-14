@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 // Models
-import ListingRecord from 'src/models/ListingRecord';
+import Coin from 'src/models/Coin';
 
 const styles = StyleSheet.create({
   container: {
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 });
 
 interface Props {
-  item: ListingRecord;
+  item: Coin;
   index: number;
 }
 

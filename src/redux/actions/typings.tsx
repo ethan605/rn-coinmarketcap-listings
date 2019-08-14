@@ -1,5 +1,5 @@
 import { Action } from 'redux-actions';
-import ListingRecord from 'src/models/ListingRecord';
+import Coin from 'src/models/Coin';
 
 export type PromiseResolver<T> = (value?: T | PromiseLike<T>) => void;
 export type PromiseRejector = (reason?: Error | undefined) => void;
@@ -13,7 +13,7 @@ export interface PromiseRequestPayload<T> {
   };
 }
 
-export interface FetchListingsPayload extends PromiseRequestPayload<ListingRecord[]> {
+export interface FetchListingsPayload extends PromiseRequestPayload<Coin[]> {
   page?: number;
 }
 

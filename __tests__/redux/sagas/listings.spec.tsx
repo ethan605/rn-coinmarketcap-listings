@@ -4,7 +4,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import Api from 'src/utils/Api';
 
 // Models
-import ListingRecord from 'src/models/ListingRecord';
+import Coin from 'src/models/Coin';
 
 // Redux
 import { listings } from 'src/redux/actions';
@@ -26,7 +26,7 @@ describe('Redux Sagas - listings', (): void => {
     const generator = fetchListingsLatestAsync(listings.fetchListingsLatest({ page }));
     expect(generator.next().value).toEqual(call(Api.fetchListingsLatest, page));
 
-    const data = ListingRecord.deserialize(listingsLatestFixtures.data);
+    const data = Coin.parse(listingsLatestFixtures.data);
     const successAction = listings.fetchListingsLatestSuccess({ data, page });
     expect(generator.next({ data: listingsLatestFixtures }).value).toEqual(put(successAction));
   });

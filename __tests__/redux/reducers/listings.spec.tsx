@@ -1,5 +1,5 @@
 // Models
-import ListingRecord from 'src/models/ListingRecord';
+import Coin from 'src/models/Coin';
 
 // Redux
 import * as listings from 'src/redux/actions/listings';
@@ -25,7 +25,7 @@ describe('Redux Reducers - listings', (): void => {
 
   it('should concern fetching success action on page 1', (): void => {
     const currentState = { ...INITIAL_STATE, isFetching: true };
-    const coins = ListingRecord.deserialize([{ id: 1 }, { id: 2 }, { id: 3 }]);
+    const coins = Coin.parse([{ id: 1 }, { id: 2 }, { id: 3 }]);
     const newState = { ...INITIAL_STATE, allCoins: coins, isFetching: false };
 
     const fetchListingsLatestSuccess = listings.fetchListingsLatestSuccess({ data: coins, page: 1 });
@@ -33,8 +33,8 @@ describe('Redux Reducers - listings', (): void => {
   });
 
   it('should concern fetching success action on page 2', (): void => {
-    const currentCoins = ListingRecord.deserialize([{ id: 1 }, { id: 2 }, { id: 3 }]);
-    const newCoins = ListingRecord.deserialize([{ id: 4 }, { id: 5 }, { id: 6 }]);
+    const currentCoins = Coin.parse([{ id: 1 }, { id: 2 }, { id: 3 }]);
+    const newCoins = Coin.parse([{ id: 4 }, { id: 5 }, { id: 6 }]);
     const currentState = { ...INITIAL_STATE, allCoins: currentCoins, isFetching: true };
     const newState = { ...INITIAL_STATE, allCoins: [...currentCoins, ...newCoins], isFetching: false };
 

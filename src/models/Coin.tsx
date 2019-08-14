@@ -7,16 +7,16 @@ import Quote, { QuoteObject } from './Quote';
 @CacheKey('QuoteSerializerDeserializer')
 class QuoteSerializerDeserializer implements Deserializer, Serializer {
   deserialize = (data: object): QuoteObject => {
-    const mappedPairs = _.map(data, (value, key): [string, Quote] => [key, Quote.deserialize(value)]);
+    const mappedPairs = _.map(data, (value, key): [string, Quote] => [key, Quote.parse(value)]);
     return _.fromPairs(mappedPairs);
   };
   serialize = (data: QuoteObject): object => {
-    const mappedPairs = _.map(data, (value, key): [string, object] => [key, Quote.serialize(value)]);
+    const mappedPairs = _.map(data, (value, key): [string, string] => [key, Quote.stringify(value)]);
     return _.fromPairs(mappedPairs);
   };
 }
 
-export default class ListingRecord {
+export default class Coin {
   @JsonProperty({ name: 'circulating_supply' })
   circulatingSupply?: number;
   @JsonProperty({ name: 'cmc_rank' })
@@ -36,8 +36,12 @@ export default class ListingRecord {
   @JsonProperty()
   symbol?: string;
 
-  static deserialize(rawData: object[]): ListingRecord[] {
-    return _.map(rawData, data => ObjectMapper.deserialize<ListingRecord>(ListingRecord, data));
+  static parse(rawData: object[]): Coin[] {
+    return _.map(rawData, data => ObjectMapper.deserialize<Coin>(Coin, data));
+  }
+
+  static stringify(records: Coin[]): string[] {
+    return _.map(records, record => ObjectMapper.serialize(record) as string);
   }
 
   public get formattedCirculatingSuply(): string {
