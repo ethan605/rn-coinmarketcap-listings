@@ -10,6 +10,7 @@ import { listings } from 'src/redux/actions';
 
 interface StateMapping {
   allCoins: ListingRecord[];
+  isFetching: boolean;
 }
 
 interface DispatchMapping {
@@ -17,8 +18,8 @@ interface DispatchMapping {
 }
 
 function mapStateToProps(state: ReduxState): StateMapping {
-  const { allCoins } = state.listings;
-  return { allCoins };
+  const { allCoins, isFetching } = state.listings;
+  return { allCoins, isFetching };
 }
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchMapping {

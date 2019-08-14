@@ -26,8 +26,8 @@ class PlaceholderScreen extends PureComponent<Props, State> {
 
   private requestListingsLatest = async (): Promise<void> => {
     try {
-      const data = await this.props.fetchListingsLatest(1);
-      console.debug('requestListingsLatest success:', data);
+      this.setState({ currentPage: 1 });
+      await this.props.fetchListingsLatest(1);
     } catch (error) {
       console.warn('requestListingsLatest error:', error.response);
     }
@@ -36,11 +36,15 @@ class PlaceholderScreen extends PureComponent<Props, State> {
   private keyExtractor = (item: ListingRecord): string => `coins_listings_${item.id}`;
 
   public render(): ReactElement {
+    const { allCoins, isFetching } = this.props;
+
     return (
       <FlatList
         contentContainerStyle={styles.contentContainer}
-        data={this.props.allCoins}
+        data={allCoins}
         keyExtractor={this.keyExtractor}
+        onRefresh={this.requestListingsLatest}
+        refreshing={isFetching}
         renderItem={RecordRow}
         style={styles.container}
       />

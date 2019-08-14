@@ -1,4 +1,4 @@
-import { JsonProperty, ObjectMapper, JsonIgnore } from 'json-object-mapper';
+import { JsonProperty, ObjectMapper } from 'json-object-mapper';
 import numeral from 'numeral';
 
 export type QuoteObject = { [key: string]: Quote };
