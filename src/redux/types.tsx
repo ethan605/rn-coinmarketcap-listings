@@ -16,6 +16,7 @@ export interface FetchListingsAction {
   payload: {
     coinsList?: object[];
     errorMessage?: string;
+    meta?: object;
     page?: number;
   };
 }
