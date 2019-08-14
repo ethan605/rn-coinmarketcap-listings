@@ -10,10 +10,7 @@ class QuoteSerializerDeserializer implements Deserializer, Serializer {
     const mappedPairs = _.map(data, (value, key): [string, Quote] => [key, Quote.parse(value)]);
     return _.fromPairs(mappedPairs);
   };
-  serialize = (data: QuoteObject): object => {
-    const mappedPairs = _.map(data, (value, key): [string, string] => [key, Quote.stringify(value)]);
-    return _.fromPairs(mappedPairs);
-  };
+  serialize = (data: QuoteObject): string => JSON.stringify(data);
 }
 
 export default class Coin {
@@ -29,23 +26,24 @@ export default class Coin {
   maxSupply?: number;
   @JsonProperty()
   name?: string;
-  @JsonProperty({ deserializer: QuoteSerializerDeserializer, name: 'quote', serializer: QuoteSerializerDeserializer })
+  @JsonProperty({ deserializer: QuoteSerializerDeserializer, name: 'quote' })
   quotes: QuoteObject = {};
   @JsonProperty()
   slug?: string;
   @JsonProperty()
   symbol?: string;
 
-  static parse(rawData: object[]): Coin[] {
-    return _.map(rawData, data => ObjectMapper.deserialize<Coin>(Coin, data));
+  static parse(data: object): Coin {
+    return ObjectMapper.deserialize<Coin>(Coin, data);
   }
 
-  static stringify(records: Coin[]): string[] {
-    return _.map(records, record => ObjectMapper.serialize(record) as string);
+  static stringify(data: Coin): string {
+    return ObjectMapper.serialize(data) as string;
   }
 
-  public get formattedCirculatingSuply(): string {
-    return numeral(this.circulatingSupply).format('$0,0.00');
+  public get formattedCirculatingSupply(): string {
+    const number = numeral(this.circulatingSupply).format('0,0');
+    return `${number} ${this.symbol}`;
   }
 
   public get USD(): Quote {

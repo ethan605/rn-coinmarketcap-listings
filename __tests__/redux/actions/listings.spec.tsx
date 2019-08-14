@@ -1,15 +1,16 @@
+import _ from 'lodash';
 import { listings } from 'src/redux/actions';
 import { LISTINGS, SUFFIXES } from 'src/redux/types';
 import Coin from 'src/models/Coin';
 
-describe('Redux Actions - listings', (): void => {
-  it('fetchListingsLatest actions', (): void => {
+describe('Redux Actions - listings', () => {
+  it('fetchListingsLatest actions', () => {
     expect(listings.fetchListingsLatest({ page: 1 })).toEqual({
       type: LISTINGS.FETCH_LISTINGS_LATEST,
       payload: { page: 1 },
     });
 
-    const data = Coin.parse([{ id: 1 }, { id: 2 }, { id: 3 }]);
+    const data = _.map([{ id: 1 }, { id: 2 }, { id: 3 }], Coin.parse);
 
     expect(listings.fetchListingsLatestSuccess({ data })).toEqual({
       type: LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.SUCCESS,

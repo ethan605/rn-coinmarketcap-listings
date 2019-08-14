@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import fp from 'lodash/fp';
 import { Action } from 'redux-actions';
 import { SagaIterator } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
@@ -21,7 +21,11 @@ export function* fetchListingsLatestAsync(action: Action<FetchListingsPayload>):
 
   try {
     const response = yield call(Api.fetchListingsLatest, page);
-    const data = Coin.parse(_.get(response, 'data.data'));
+    const data = fp.flow(
+      fp.get('data.data'),
+      fp.map(Coin.parse)
+    )(response);
+
     yield put(listings.fetchListingsLatestSuccess({ data, page }));
     resolve != null && resolve(data);
   } catch (error) {

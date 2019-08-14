@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1565786672022" clover="3.2.0">
-  <project timestamp="1565786672022" name="All files">
-    <metrics statements="100" coveredstatements="75" conditionals="34" coveredconditionals="20" methods="40" coveredmethods="22" elements="174" coveredelements="117" complexity="0" loc="100" ncloc="100" packages="8" files="17" classes="17"/>
+<coverage generated="1565789377013" clover="3.2.0">
+  <project timestamp="1565789377013" name="All files">
+    <metrics statements="99" coveredstatements="79" conditionals="34" coveredconditionals="20" methods="37" coveredmethods="24" elements="170" coveredelements="123" complexity="0" loc="99" ncloc="99" packages="8" files="17" classes="17"/>
     <package name="rn-coinmarketcap-listings">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="/Users/ethanify/Documents/Workspaces/jobs-hunting/rn-coinmarketcap-listings/App.tsx">
@@ -55,24 +55,23 @@
       </file>
     </package>
     <package name="rn-coinmarketcap-listings.src.models">
-      <metrics statements="17" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="16" coveredmethods="5"/>
+      <metrics statements="16" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="7"/>
       <file name="Coin.tsx" path="/Users/ethanify/Documents/Workspaces/jobs-hunting/rn-coinmarketcap-listings/src/models/Coin.tsx">
-        <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="4"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="8" type="stmt"/>
-        <line num="11" count="4" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="33" count="14" type="stmt"/>
-        <line num="40" count="14" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="6"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="60" type="stmt"/>
+        <line num="11" count="60" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="30" count="42" type="stmt"/>
+        <line num="37" count="42" type="stmt"/>
+        <line num="41" count="10" type="stmt"/>
+        <line num="45" count="10" type="stmt"/>
+        <line num="46" count="10" type="stmt"/>
+        <line num="50" count="10" type="stmt"/>
       </file>
       <file name="Quote.tsx" path="/Users/ethanify/Documents/Workspaces/jobs-hunting/rn-coinmarketcap-listings/src/models/Quote.tsx">
         <metrics statements="6" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
-        <line num="23" count="8" type="stmt"/>
+        <line num="23" count="60" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
@@ -147,11 +146,11 @@
         <line num="22" count="3" type="stmt"/>
         <line num="23" count="3" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="34" count="2" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="38" count="2" type="stmt"/>
       </file>
     </package>
     <package name="rn-coinmarketcap-listings.src.utils">

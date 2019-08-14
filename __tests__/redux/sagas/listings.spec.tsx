@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 // Api
@@ -14,24 +15,24 @@ import { LISTINGS } from 'src/redux/types';
 // Fixtures
 import listingsLatestFixtures from '../../fixtures/listingsLatest.json';
 
-describe('Redux Sagas - listings', (): void => {
-  it('should watch fetchingListingsLatest action trigger', (): void => {
+describe('Redux Sagas - listings', () => {
+  it('should watch fetchingListingsLatest action trigger', () => {
     expect(watchFetchingListingsLatest().next().value).toEqual(
       takeLatest(LISTINGS.FETCH_LISTINGS_LATEST, fetchListingsLatestAsync)
     );
   });
 
-  it('should handle fetchListingsLatestAsync when success', (): void => {
+  it('should handle fetchListingsLatestAsync when success', () => {
     const page = 1;
     const generator = fetchListingsLatestAsync(listings.fetchListingsLatest({ page }));
     expect(generator.next().value).toEqual(call(Api.fetchListingsLatest, page));
 
-    const data = Coin.parse(listingsLatestFixtures.data);
+    const data = _.map(listingsLatestFixtures.data, Coin.parse);
     const successAction = listings.fetchListingsLatestSuccess({ data, page });
     expect(generator.next({ data: listingsLatestFixtures }).value).toEqual(put(successAction));
   });
 
-  it('should handle fetchListingsLatestAsync when error', (): void => {
+  it('should handle fetchListingsLatestAsync when error', () => {
     const generator = fetchListingsLatestAsync(listings.fetchListingsLatest({ page: 1 }));
     expect(generator.next().value).toEqual(call(Api.fetchListingsLatest, 1));
 

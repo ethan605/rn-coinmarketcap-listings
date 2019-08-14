@@ -62,7 +62,7 @@ const RecordRow: React.SFC<Props> = ({ index, item }) => (
     <View style={styles.pricesContainer}>
       <Text style={styles.text}>
         {'Cir. Supply: '}
-        <Text style={styles.currency}>{item.formattedCirculatingSuply}</Text>
+        <Text style={styles.currency}>{item.formattedCirculatingSupply}</Text>
       </Text>
       <Text style={styles.text}>
         {'Price: '}
