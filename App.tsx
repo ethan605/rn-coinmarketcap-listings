@@ -5,6 +5,7 @@
 import React, { PureComponent, ReactElement } from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
+import 'reflect-metadata';
 
 // Locals
 import CoinsListings from 'src/components/CoinsListings';

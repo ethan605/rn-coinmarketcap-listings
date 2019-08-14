@@ -21,7 +21,7 @@ export function* fetchListingsLatestAsync(action: Action<FetchListingsPayload>):
 
   try {
     const response = yield call(Api.fetchListingsLatest, page);
-    const data = ListingRecord.parse(_.get(response, 'data.data'));
+    const data = ListingRecord.deserialize(_.get(response, 'data.data'));
     yield put(listings.fetchListingsLatestSuccess({ data }));
     resolve != null && resolve(data);
   } catch (error) {
