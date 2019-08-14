@@ -1,10 +1,14 @@
 import _ from 'lodash';
-import { listings } from 'src/redux/actions';
-import { LISTINGS, SUFFIXES } from 'src/redux/types';
+
+// Models
 import Coin from 'src/models/Coin';
 
+// Redux
+import { listings } from 'src/redux/actions';
+import { LISTINGS, SUFFIXES } from 'src/redux/types';
+
 describe('Redux Actions - listings', () => {
-  it('fetchListingsLatest actions', () => {
+  it('fetchListingsLatest plain actions', () => {
     expect(listings.fetchListingsLatest({ page: 1 })).toEqual({
       type: LISTINGS.FETCH_LISTINGS_LATEST,
       payload: { page: 1 },

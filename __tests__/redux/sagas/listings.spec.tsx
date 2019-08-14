@@ -43,4 +43,47 @@ describe('Redux Sagas - listings', () => {
       expect(generator.throw(new Error(errorMessage)).value).toEqual(put(errorAction));
     }
   });
+
+  test('fetchListingsLatest promise success', async () => {
+    const promise = new Promise<Coin[]>(
+      (resolve, reject): void => {
+        const page = 1;
+        const generator = fetchListingsLatestAsync(
+          listings.fetchListingsLatest({ page, promise: { resolve, reject } })
+        );
+        generator.next();
+        generator.next({ data: listingsLatestFixtures });
+        generator.next();
+      }
+    );
+
+    try {
+      const data = await promise;
+      expect(data.length).toEqual(10);
+      _.each(data, item => expect(item instanceof Coin).toBeTruthy());
+    } catch (error) {}
+  });
+
+  test('fetchListingsLatest promise error', async () => {
+    const promise = new Promise<Coin[]>(
+      (resolve, reject): void => {
+        const page = 1;
+        const generator = fetchListingsLatestAsync(
+          listings.fetchListingsLatest({ page, promise: { resolve, reject } })
+        );
+        generator.next();
+        if (generator.throw) {
+          generator.throw(new Error('Request failed'));
+        }
+        generator.next();
+      }
+    );
+
+    try {
+      await promise;
+    } catch (error) {
+      expect(error instanceof Error).toBeTruthy();
+      expect(error.message).toEqual('Request failed');
+    }
+  });
 });

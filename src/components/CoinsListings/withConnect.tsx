@@ -14,7 +14,7 @@ interface StateMapping {
 }
 
 interface DispatchMapping {
-  fetchListingsLatest: (page: number) => Promise<object[]>;
+  fetchListingsLatest: (page: number) => Promise<Coin[]>;
 }
 
 function mapStateToProps(state: ReduxState): StateMapping {
@@ -24,8 +24,8 @@ function mapStateToProps(state: ReduxState): StateMapping {
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchMapping {
   return {
-    fetchListingsLatest: (page): Promise<object[]> =>
-      new Promise<object[]>(
+    fetchListingsLatest: (page): Promise<Coin[]> =>
+      new Promise<Coin[]>(
         (resolve, reject): void => {
           dispatch(listings.fetchListingsLatest({ page, promise: { resolve, reject } }));
         }
