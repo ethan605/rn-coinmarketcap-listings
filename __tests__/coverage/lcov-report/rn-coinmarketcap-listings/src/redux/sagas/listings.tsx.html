@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>5/10</span>
+        <span class='fraction'>6/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>0/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/10</span>
+        <span class='fraction'>6/9</span>
       </div>
     </div>
     <p class="quiet">
@@ -73,7 +73,8 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -83,48 +84,50 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createAction } from 'redux-actions';
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { SagaIterator } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
 &nbsp;
 // Utils
 import Api from 'src/utils/Api';
 &nbsp;
+// Actions
+import * as listings from '../actions/listings';
+&nbsp;
 // Types
-import { LISTINGS, SUFFIXES } from '../types';
+import { LISTINGS } from '../types';
 &nbsp;
-export function* fetchListingsLatestAsync() {
-  const successAction = createAction(LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.SUCCESS);
-  const errorAction = createAction(LISTINGS.FETCH_LISTINGS_LATEST + SUFFIXES.ERROR);
-&nbsp;
+export function* fetchListingsLatestAsync(): SagaIterator {
   try {
     const data = yield call(Api.fetchListingsLatest, 1);
-<span class="cstat-no" title="statement not covered" >    console.debug('fetchListingsLatestAsync', data);</span>
-    const coinsData = <span class="cstat-no" title="statement not covered" >[1, 2, 3];</span>
-<span class="cstat-no" title="statement not covered" >    yield put(successAction({ coinsData }));</span>
+    console.debug('fetchListingsLatestAsync', data);
+    const coinsList = [{ id: 1 }, { id: 2 }, { id: 3 }];
+    yield put(listings.fetchListingsLatestSuccess({ coinsList }));
   } catch (error) {
-    const { message, response } = <span class="cstat-no" title="statement not covered" >error;</span>
-<span class="cstat-no" title="statement not covered" >    yield put(errorAction({ message, meta: { data: response.data } }));</span>
+    const { message: errorMessage, response } = <span class="cstat-no" title="statement not covered" >error;</span>
+    const { data = <span class="branch-0 cbranch-no" title="branch not covered" >null </span>} = <span class="cstat-no" title="statement not covered" >response || {};</span>
+<span class="cstat-no" title="statement not covered" >    yield put(listings.fetchListingsLatestError({ errorMessage, meta: { data } }));</span>
   }
 }
 &nbsp;
-export function* watchFetchingListingsLatest() {
+export function* watchFetchingListingsLatest(): SagaIterator {
   yield takeLatest(LISTINGS.FETCH_LISTINGS_LATEST, fetchListingsLatestAsync);
 }
 &nbsp;</pre></td></tr>
@@ -133,7 +136,7 @@ export function* watchFetchingListingsLatest() {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Aug 14 2019 00:32:07 GMT+0700 (Indochina Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Aug 14 2019 10:10:52 GMT+0700 (Indochina Time)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
