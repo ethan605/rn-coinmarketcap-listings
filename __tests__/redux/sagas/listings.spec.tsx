@@ -13,7 +13,7 @@ import { fetchListingsLatestAsync, watchFetchingListingsLatest } from 'src/redux
 import { LISTINGS } from 'src/redux/types';
 
 // Fixtures
-import listingsLatestFixtures from '../../fixtures/listingsLatest.json';
+import listingsLatestFixtures from '../../fixtures/listings_latest.json';
 
 describe('Redux Sagas - listings', () => {
   it('should watch fetchingListingsLatest action trigger', () => {

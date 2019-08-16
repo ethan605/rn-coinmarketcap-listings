@@ -7,6 +7,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   env: {
+    jest: true,
     node: true,
   },
   extends: [

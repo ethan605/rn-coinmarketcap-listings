@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1565792587602" clover="3.2.0">
-  <project timestamp="1565792587602" name="All files">
-    <metrics statements="101" coveredstatements="90" conditionals="34" coveredconditionals="24" methods="37" coveredmethods="31" elements="172" coveredelements="145" complexity="0" loc="101" ncloc="101" packages="8" files="17" classes="17"/>
+<coverage generated="1565966246507" clover="3.2.0">
+  <project timestamp="1565966246507" name="All files">
+    <metrics statements="100" coveredstatements="94" conditionals="41" coveredconditionals="26" methods="38" coveredmethods="33" elements="179" coveredelements="153" complexity="0" loc="100" ncloc="100" packages="8" files="17" classes="17"/>
     <package name="rn-coinmarketcap-listings">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="/Users/ethanify/Documents/Workspaces/jobs-hunting/rn-coinmarketcap-listings/App.tsx">
@@ -12,7 +12,7 @@
       </file>
     </package>
     <package name="rn-coinmarketcap-listings.src.components.CoinsListings">
-      <metrics statements="28" coveredstatements="21" conditionals="8" coveredconditionals="4" methods="11" coveredmethods="8"/>
+      <metrics statements="29" coveredstatements="23" conditionals="15" coveredconditionals="6" methods="13" coveredmethods="9"/>
       <file name="RecordRow.tsx" path="/Users/ethanify/Documents/Workspaces/jobs-hunting/rn-coinmarketcap-listings/src/components/CoinsListings/RecordRow.tsx">
         <metrics statements="3" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="7" count="1" type="stmt"/>
@@ -20,35 +20,36 @@
         <line num="57" count="0" type="stmt"/>
       </file>
       <file name="index.tsx" path="/Users/ethanify/Documents/Workspaces/jobs-hunting/rn-coinmarketcap-listings/src/components/CoinsListings/index.tsx">
-        <metrics statements="20" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="4"/>
+        <metrics statements="21" coveredstatements="16" conditionals="11" coveredconditionals="6" methods="8" coveredmethods="5"/>
         <line num="20" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
+        <line num="28" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="29" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
-        <line num="56" count="2" type="stmt"/>
-        <line num="58" count="2" type="cond" truecount="4" falsecount="0"/>
-        <line num="59" count="1" type="stmt"/>
-        <line num="62" count="1" type="stmt"/>
+        <line num="51" count="1" type="cond" truecount="2" falsecount="2"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="65" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
       </file>
       <file name="styles.tsx" path="/Users/ethanify/Documents/Workspaces/jobs-hunting/rn-coinmarketcap-listings/src/components/CoinsListings/styles.tsx">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
       <file name="withConnect.tsx" path="/Users/ethanify/Documents/Workspaces/jobs-hunting/rn-coinmarketcap-listings/src/components/CoinsListings/withConnect.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
@@ -154,9 +155,9 @@
       </file>
     </package>
     <package name="rn-coinmarketcap-listings.src.utils">
-      <metrics statements="19" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="7" coveredmethods="5"/>
+      <metrics statements="17" coveredstatements="17" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="6"/>
       <file name="Api.tsx" path="/Users/ethanify/Documents/Workspaces/jobs-hunting/rn-coinmarketcap-listings/src/utils/Api.tsx">
-        <metrics statements="19" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="7" coveredmethods="5"/>
+        <metrics statements="17" coveredstatements="17" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="6"/>
         <line num="23" count="3" type="stmt"/>
         <line num="24" count="3" type="cond" truecount="1" falsecount="1"/>
         <line num="26" count="3" type="stmt"/>
@@ -165,17 +166,15 @@
         <line num="37" count="3" type="stmt"/>
         <line num="39" count="2" type="stmt"/>
         <line num="40" count="2" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="48" count="3" type="stmt"/>
-        <line num="50" count="2" type="stmt"/>
-        <line num="51" count="2" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="60" count="3" type="stmt"/>
-        <line num="61" count="3" type="stmt"/>
-        <line num="63" count="3" type="stmt"/>
-        <line num="68" count="3" type="stmt"/>
+        <line num="44" count="3" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="56" count="3" type="stmt"/>
+        <line num="57" count="3" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="64" count="3" type="stmt"/>
       </file>
     </package>
   </project>

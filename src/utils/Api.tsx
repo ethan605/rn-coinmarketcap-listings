@@ -38,10 +38,6 @@ class Api {
       (config): AxiosRequestConfig => {
         console.debug('Axios request fired', config.url, config);
         return config;
-      },
-      (error): Promise<void> => {
-        console.debug('Axios request error', error);
-        return Promise.reject(error);
       }
     );
 

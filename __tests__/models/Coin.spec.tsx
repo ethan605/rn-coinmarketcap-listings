@@ -5,7 +5,7 @@ import Coin from 'src/models/Coin';
 import Quote from 'src/models/Quote';
 
 // Fixtures
-import listingsLatestFixtures from '../fixtures/listingsLatest.json';
+import listingsLatestFixtures from '../fixtures/listings_latest.json';
 
 describe('Models - Coin', () => {
   const coins = _.map(listingsLatestFixtures.data, Coin.parse);

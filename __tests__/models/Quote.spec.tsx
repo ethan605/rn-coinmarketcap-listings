@@ -5,7 +5,7 @@ import Coin from 'src/models/Coin';
 import Quote from 'src/models/Quote';
 
 // Fixtures
-import listingsLatestFixtures from '../fixtures/listingsLatest.json';
+import listingsLatestFixtures from '../fixtures/listings_latest.json';
 
 describe('Models - Quote', () => {
   const quotes = Coin.parse(listingsLatestFixtures.data[0]).quotes;
