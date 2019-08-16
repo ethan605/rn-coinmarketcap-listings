@@ -44,7 +44,7 @@ describe('Redux Sagas - listings', () => {
     }
   });
 
-  test('fetchListingsLatest promise success', async () => {
+  it('fetchListingsLatest promise success', async () => {
     const promise = new Promise<Coin[]>(
       (resolve, reject): void => {
         const page = 1;
@@ -57,11 +57,9 @@ describe('Redux Sagas - listings', () => {
       }
     );
 
-    try {
-      const data = await promise;
-      expect(data.length).toEqual(10);
-      _.each(data, item => expect(item instanceof Coin).toBeTruthy());
-    } catch (error) {}
+    const data = await promise;
+    expect(data.length).toEqual(10);
+    _.each(data, item => expect(item instanceof Coin).toBeTruthy());
   });
 
   it('fetchListingsLatest promise error', async () => {
